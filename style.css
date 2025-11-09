@@ -1,0 +1,605 @@
+/* ===== 1. THEME & GLOBAL STYLES ===== */
+:root {
+    /* Black & Green color palette */
+    --bg-color: #121212;         /* Very dark charcoal (almost black) */
+    --card-bg: #1e1e1e;         /* Slightly lighter black for cards */
+    --text-color: #e0e0e0;       /* Light gray for text (easier to read) */
+    --text-muted: #888;        /* A more muted gray for dates */
+    --primary-color: #39FF14;    /* A vibrant neon green */
+    --green-gradient: linear-gradient(135deg, #39FF14, #28a745);
+    
+    /* Fonts */
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* This makes the nav links scroll smoothly */
+    scroll-padding-top: 70px; /* Offset for the sticky nav */
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Re-usable container for centering content */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 4rem 0; /* Vertical spacing for all sections */
+}
+
+/* Re-usable Section Title (like in the video) */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.section-title h2 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+.section-title .title-divider {
+    height: 4px;
+    width: 70px;
+    background: var(--green-gradient);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+/* Re-usable Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin: 0.5rem 0;
+    border: 2px solid var(--primary-color);
+    font-size: 1rem;
+}
+.btn i {
+    margin-right: 8px; /* Space between icon and text */
+}
+.btn-primary {
+    background: var(--green-gradient);
+    color: #000; /* Black text on green button */
+}
+.btn-primary:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--primary-color);
+}
+.btn-ghost:hover {
+    background: var(--primary-color);
+    color: #000;
+}
+
+
+/* ===== 2. HEADER & STICKY NAVIGATION ===== */
+.header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--card-bg);
+    
+    /* This is what makes it sticky! */
+    position: sticky;
+    top: 0;
+    
+    width: 100%;
+    z-index: 1000; /* Stays on top of everything */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary-color); /* Green logo */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.nav-item a:hover {
+    color: var(--primary-color); /* Green hover */
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* === NEW RULE FOR ACTIVE LINK (SCROLL SPY) === */
+.nav-item a.active-link {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color); 
+}
+
+/* Hamburger Menu (hidden on desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+
+/* ===== 3. HERO SECTION ===== */
+.hero-section {
+    background-color: var(--bg-color);
+    padding: 4rem 0;
+    min-height: calc(100vh - 70px); /* Full viewport height minus nav */
+    display: flex;
+    align-items: center;
+}
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1; /* Takes up 1 part of the space */
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.hero-tagline {
+    font-size: 1.8rem;
+    color: var(--primary-color); /* Green tagline */
+    margin-bottom: 1.5rem;
+}
+.hero-buttons {
+    margin: 2rem 0;
+}
+.hero-buttons .btn {
+    margin-right: 1rem;
+}
+.hero-socials a {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+.hero-socials a:hover {
+    color: var(--primary-color);
+}
+
+.hero-image {
+    flex: 0 0 350px; /* Takes up a fixed 350px width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-image img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%; /* Makes it circular */
+    border: 8px solid var(--card-bg); /* Dark border */
+    /* Neon green glow effect */
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.5); 
+    object-fit: cover;
+}
+
+
+/* ===== 4. SKILLS SECTION ===== */
+.skills-grid {
+    display: grid;
+    /* Create 4 equal columns */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.5rem;
+}
+.skill-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+.skill-card h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.skill-card span {
+    display: block; /* Each skill on a new line */
+    background-color: #333;
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* ===== 5. EXPERIENCE SECTION ===== */
+.experience-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.experience-item {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+}
+.experience-item h3 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+.experience-item .experience-date {
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0.25rem 0 1rem 0;
+}
+.experience-item ul {
+    list-style-position: inside;
+}
+.experience-item li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== 6. PARALLAX SECTION (Assignment Requirement) ===== */
+.parallax-section {
+    height: 400px; /* Gives it height */
+    padding: 4rem 2rem;
+    
+    /* TODO: Make sure your image is at this path */
+    background-image: url('assets/images/parallax-bg.jpg');
+    
+    /* These properties create the parallax effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Adds a dark overlay so text is readable */
+    position: relative;
+    color: #fff;
+}
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
+.parallax-content {
+    /* Sits on top of the overlay */
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.parallax-content h2 {
+    font-size: 2.5rem;
+    font-style: italic;
+}
+
+/* ===== 7. PROJECTS SECTION ===== */
+.projects-grid {
+    display: grid;
+    /* 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+.project-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.project-card h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.project-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.project-tags {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.project-tags span {
+    background-color: #333;
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+/* ===== 8. EMBEDDED VIDEO SECTION (3-Column Grid) ===== */
+.video-grid {
+    display: grid;
+    /* This is the line that creates 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* Space between videos */
+}
+
+.video-wrapper {
+    /* This creates the 16:9 aspect ratio */
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px;
+    border: 1px solid #333; /* Adds a small border */
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== 9. RESUME SECTION ===== */
+#resume p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.resume-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ===== 10. CONTACT SECTION (REPLACE OLD ONE) ===== */
+.contact-layout {
+    display: flex;
+    gap: 3rem; /* Space between the two columns */
+}
+
+/* Left Column Styling */
+.contact-info {
+    flex: 1; /* Takes 1 part of the space */
+}
+.contact-info h3 {
+    color: var(--primary-color); /* Green "Let's Connect" title */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.contact-info p {
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+.contact-list {
+    list-style: none;
+}
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between icon and text */
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+.contact-list .icon {
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Green icons */
+    width: 25px; /* Helps align the text neatly */
+    text-align: center;
+}
+
+/* Right Column Styling */
+.contact-form-container {
+    flex: 1; /* Takes 1 part of the space */
+    background-color: var(--card-bg); /* Dark grey card for the form */
+    padding: 2rem;
+    border-radius: 8px;
+}
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+.contact-form label {
+    display: block; /* Puts label above the input */
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    background-color: var(--bg-color); /* Darker inputs, like in the image */
+    color: var(--text-color);
+    border-radius: 5px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+.contact-form button {
+    cursor: pointer;
+    width: 100%; /* Makes the "Send Message" button full-width */
+}
+
+/* ===== 11. FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    color: var(--text-muted);
+    margin-top: 2rem;
+}
+.footer-socials {
+    margin-top: 1rem;
+}
+.footer-socials a {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+.footer-socials a:hover {
+    color: var(--primary-color);
+}
+
+
+/* ===== 12. RESPONSIVENESS (MOBILE) ===== */
+@media(max-width: 900px) {
+    /* Stack the hero content on mobile */
+    .hero-layout {
+        flex-direction: column-reverse; /* Puts image on top */
+        text-align: center;
+    }
+    .hero-image {
+        flex-basis: 300px; /* Make image smaller */
+    }
+    .hero-image img {
+        width: 300px;
+        height: 300px;
+    }
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-content .hero-tagline { font-size: 1.5rem; }
+    .hero-socials { justify-content: center; }
+
+    /* Stack the skills grid */
+    .skills-grid {
+        /* 2 columns on tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Stack the projects grid */
+    .projects-grid {
+        /* 2 columns on tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px) {
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: block;
+        .contact-layout {
+        flex-direction: column; /* Stacks the columns on mobile */
+        gap: 2rem;
+    }
+
+    }
+    
+    /* This animates the 'active' hamburger icon */
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Hides menu off-screen */
+        top: 70px; /* Below the nav */
+        flex-direction: column;
+        background-color: var(--bg-color);
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--card-bg);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    /* This class is added by JavaScript to show the menu */
+    .nav-menu.active {
+        left: 0; 
+    }
+
+    .nav-item {
+        padding: 10px 0;
+    }
+    .nav-item a:hover {
+        border-bottom: none; /* Remove border hover on mobile */
+    }
+    
+    /* === NEW RULE FOR ACTIVE LINK ON MOBILE === */
+    .nav-item a.active-link {
+        border-bottom: none;
+        background-color: var(--card-bg); /* Add a dark background */
+    }
+    
+    /* This is needed to make parallax work properly on mobile */
+    /* It disables the 'fixed' attachment */
+    .parallax-section {
+        background-attachment: scroll;
+    }
+    
+    /* Stack grids to 1 column on small phones */
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
