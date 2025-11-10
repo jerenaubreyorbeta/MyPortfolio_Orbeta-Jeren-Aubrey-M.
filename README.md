@@ -15,7 +15,7 @@ To view this project on your local machine:
 
 1.  Clone this repository:
     ```sh
-    git clone https://github.com/jerenaubreyorbeta/MyPortfolio_Orbeta-Jeren-Aubrey-M.
+    git clone https://github.com/jerenaubreyorbeta/MyPortfolio_Orbeta-Jeren-Aubrey-M..git
     ```
 2.  Navigate into the new project folder:
     ```sh
